@@ -1,6 +1,10 @@
 # 人生决策器
 
-人生决策器是一个用于重要个人与工作决策的 Codex Skill，调用名为 `$decide-better`。
+人生决策器（Decide Better）是一个用于重要个人与工作决策的跨平台 Agent Skill。核心指令位于 `SKILL.md`：Codex 可原生识别它，其他支持 Skill、项目指令或自定义指令的智能体也可加载同一份核心内容。Codex 中的调用名为 `$decide-better`。
+
+## English quick start
+
+`SKILL.md` is the portable source of truth. Load the whole folder in an agent that supports local skills, or load `SKILL.md` as a project/custom instruction in another agent. `agents/openai.yaml` is optional Codex-only UI metadata. See [COMPATIBILITY.md](COMPATIBILITY.md) for integration patterns and limits.
 
 ## 项目解决什么问题
 
@@ -30,7 +34,9 @@
 
 ## 安装方法
 
-本项目不需要安装依赖，也不包含执行脚本。将整个项目目录放入 Codex 的个人 Skills 目录即可。
+本项目不需要安装依赖，也不包含执行脚本。`SKILL.md` 是所有平台共享的核心；请始终连同 `references/` 一起保留。不同智能体对目录、自动发现和自定义指令的支持不同，因此分为以下三种接入方式。
+
+### Codex
 
 本地开发推荐使用软链接，使项目修改自动同步到安装版本：
 
@@ -52,6 +58,14 @@ cp -R /你的绝对路径/decide-better ~/.codex/skills/decide-better
 ```
 
 安装或更新后，新建一个 Codex 任务；如果没有识别到 Skill，完全退出并重新打开 Codex。
+
+### 其他智能体
+
+- **支持 `SKILL.md` 或 Agent Skills 的平台**：按该平台的官方目录约定复制整个项目文件夹；不要只复制 `SKILL.md`，以免深度模式无法读取 `references/deep-analysis.md`。
+- **只支持项目规则或自定义指令的平台**：将 `SKILL.md` 的完整内容作为项目级或自定义指令，并在平台允许时同时提供 `references/deep-analysis.md`。可使用该平台自己的规则文件名，不需要伪造 Codex 的 `agents/openai.yaml`。
+- **普通对话式智能体**：上传 `SKILL.md` 和 `references/deep-analysis.md`，或在自定义指令中粘贴 `SKILL.md`；然后直接描述要做的关键决策。
+
+完整的接入原则、运行时映射与已知边界见 [COMPATIBILITY.md](COMPATIBILITY.md)。
 
 ## 使用方法
 

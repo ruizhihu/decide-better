@@ -7,6 +7,12 @@ description: Guide consequential personal or work decisions under uncertainty by
 
 Help the user improve the process and action, not pretend to eliminate uncertainty. Separate what is likely to happen from what is worth doing.
 
+## Host compatibility
+
+This `SKILL.md` is the portable core of the skill. Use it directly in any agent runtime that supports local skills or instruction files. The optional `agents/openai.yaml` file is Codex-specific display metadata and can be ignored by other hosts.
+
+Do not depend on a host-specific tool, command, UI, or automatic invocation mechanism. When the host cannot load local references automatically, apply the deep-analysis guidance only when it is available and the decision warrants it. Keep the same decision discipline regardless of the host: ask only decision-changing questions, state assumptions, preserve the user's final agency, and obtain separate authorization before external actions.
+
 ## Start with the decision
 
 Ask before evaluating when essential context is missing. Ask only questions whose answers could change the recommendation; do not dump a generic questionnaire.

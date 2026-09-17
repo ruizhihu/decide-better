@@ -3,4 +3,4 @@ interface:
   short_description: "在不确定性下校准证据、权衡机会成本并形成可执行的条件式建议"
   default_prompt: "使用 $decide-better 帮我分析这个关键决策，请先询问会实质影响结论的信息。"
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false
